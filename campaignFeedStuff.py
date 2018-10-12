@@ -27,10 +27,10 @@ def feedItems(client_customer_id, refresh_token):
         return None
 
 
-    # feed_mapping_service = adwords_client.GetService('FeedMappingService', version='v201710')
+    # feed_mapping_service = adwords_client.GetService('FeedMappingService', version='v201806')
     # feed_item_service = adwords_client.GetService('FeedItemService', version='v201710')
 
-    campaign_feed_service = adwords_client.GetService('AdGroupFeedService', 'v201806')
+    campaign_feed_service = adwords_client.GetService('CampaignFeedService', 'v201806')
 
     PAGE_SIZE = 1
     campaign_feeds = []
@@ -44,11 +44,11 @@ def feedItems(client_customer_id, refresh_token):
                 'operator': 'EQUALS',
                 'values': ['ENABLED']
             },
-            # {
-            #     'field': 'FeedId',
-            #     'operator': 'IN',
-            #     'values': [32226171]
-            # },
+            {
+                'field': 'FeedId',
+                'operator': 'IN',
+                'values': [75151834]
+            },
             {
                 'field': 'PlaceholderTypes',
                 'operator': 'CONTAINS_ANY',

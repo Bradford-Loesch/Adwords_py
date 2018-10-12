@@ -26,9 +26,9 @@ def feedItems(client_customer_id, refresh_token):
         traceback.print_exc()
         return None
 
-    feed_service = adwords_client.GetService('FeedService', version='v201806')
+    # feed_service = adwords_client.GetService('FeedService', version='v201806')
     # feed_mapping_service = adwords_client.GetService('FeedMappingService', version='v201806')
-    # feed_item_service = adwords_client.GetService('FeedItemService', version='v201806')
+    feed_item_service = adwords_client.GetService('FeedItemService', version='v201806')
 
     feed_selector = {
         'fields': ['FeedStatus', 'Id', 'Name', 'Origin', 'SystemFeedGenerationData'],
@@ -41,28 +41,28 @@ def feedItems(client_customer_id, refresh_token):
         ]
     }
 
-    # itemSelector = {
-    #     'fields': [
-    #         'AttributeValues',
-    #         'FeedId',
-    #         'FeedItemId',
-    #         'Status',
-    #         'TargetingCampaignId',
-    #         'TargetingAdGroupId'
-    #     ],
-    #     'predicates': [
-    #         {
-    #           'field': 'Status',
-    #           'operator': 'EQUALS',
-    #           'values': ['ENABLED']
-    #         },
-    #         {
-    #           'field': 'FeedId',
-    #           'operator': 'IN',
-    #           'values': [75151834]
-    #         }
-    #     ]
-    # }
+    itemSelector = {
+        'fields': [
+            'AttributeValues',
+            'FeedId',
+            'FeedItemId',
+            'Status',
+            'TargetingCampaignId',
+            'TargetingAdGroupId'
+        ],
+        'predicates': [
+            {
+              'field': 'Status',
+              'operator': 'EQUALS',
+              'values': ['ENABLED']
+            },
+            {
+              'field': 'FeedId',
+              'operator': 'IN',
+              'values': [75151834]
+            }
+        ]
+    }
 
     mapping_selector = {
         'fields': [
@@ -92,9 +92,9 @@ def feedItems(client_customer_id, refresh_token):
     #     'operator': 'REMOVE',
     #     'operand': feed_item
     # }
-    response = feed_service.get(feed_selector)
+    # response = feed_service.get(feed_selector)
 
-    # response = feed_item_service.get(itemSelector)
+    response = feed_item_service.get(itemSelector)
 
     # response = feed_mapping_service.get(mapping_selector)
 

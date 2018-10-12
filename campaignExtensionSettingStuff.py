@@ -27,26 +27,26 @@ def feedItems(client_customer_id, refresh_token):
         return None
 
 
-    campaign_extension_service = adwords_client.GetService('CampaignExtensionSettingService', 'v201806')
+    campaign_extension_service = adwords_client.GetService('AdGroupExtensionSettingService', 'v201806')
 
     PAGE_SIZE = 1
     campaign_extensions = []
     more_pages = True
 
     selector = {
-        'fields': ['CampaignId','ExtensionType', 'Extensions'],
-        'predicates': [
-            # {
-            #     'field': 'Status',
-            #     'operator': 'EQUALS',
-            #     'values': ['ENABLED']
-            # }, 1419349875
-            {
-                'field': 'CampaignId',
-                'operator': 'IN',
-                'values': [1418802235]
-            }
-        ],
+        'fields': ['AdGroupId','ExtensionType', 'Extensions'],
+        # 'predicates': [
+        #     # {
+        #     #     'field': 'Status',
+        #     #     'operator': 'EQUALS',
+        #     #     'values': ['ENABLED']
+        #     # }, 1419349875
+        #     # {
+        #     #     'field': 'CampaignId',
+        #     #     'operator': 'IN',
+        #     #     'values': [1418802235]
+        #     # }
+        # ],
         'paging': {
             'startIndex': 0,
             'numberResults': PAGE_SIZE
